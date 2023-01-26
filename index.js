@@ -16,6 +16,9 @@ import puppeteer from "puppeteer"
         page.click(".nav-search-btn")
     ])
 
+    await page.click('[aria-label="Até R$ 1.000"]')
+
+    await page.waitForSelector(".ui-search-result__image > a")
     const links = await page.$$eval('.ui-search-result__image > a', el => el.map(link => link.href))
     const list = []
 
